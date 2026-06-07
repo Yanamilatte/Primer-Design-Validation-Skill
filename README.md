@@ -9,7 +9,7 @@ This skill is intended for primer order-list review: it checks existing forward/
 - Validates RT-PCR and RT-qPCR primer pairs against NCBI Primer-BLAST results.
 - Reviews intended products, unintended templates, transcript variants, homologs, and pseudogene-like hits.
 - Supports gene-level or isoform-specific interpretation depending on the assay goal.
-- Handles cross-species background checks, such as human transgene primers in rat or mouse samples.
+- Handles cross-species background checks, such as target-species primers in host/background samples.
 - Redesigns failed primer pairs using target RefSeq/FASTA templates and re-checks replacement candidates before marking them as orderable.
 - Produces concise reports with pass/warning/fail decisions, product size, Tm/GC notes, and practical caveats.
 - Cleans temporary Primer-BLAST HTML, job folders, helper files, and intermediate workbooks when cleanup is requested.
