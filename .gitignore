@@ -1,0 +1,6 @@
+__pycache__/
+*.pyc
+.DS_Store
+primer_blast_*/
+primer_validation_*/
+primer_redesign_*/

@@ -1,0 +1,4 @@
+interface:
+  display_name: "RT Primer BLAST NCBI"
+  short_description: "Validate and redesign RT/qPCR primers with NCBI Primer-BLAST"
+  default_prompt: "Use $rt-primer-blast-ncbi to check whether these RT/qPCR primers are specific, then redesign and re-check any failed primer pairs."
