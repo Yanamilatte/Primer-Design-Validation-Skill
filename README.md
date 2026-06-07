@@ -49,5 +49,3 @@ Use $primer-design-validation-skill to check whether these RT-qPCR primers are s
 ## Important Notes
 
 Primer-BLAST validation is in-silico evidence, not wet-lab proof. Final RT-qPCR assays still need experimental confirmation, including efficiency testing, melt curve or gel checks, no-template controls, and appropriate biological controls.
-
-中文速览: 这个 skill 用于 RT-PCR/RT-qPCR 引物下单前筛查。它会核对特异性，不合格的引物会重新设计并再次核对，最终只把通过筛查的引物放进可下单清单。
