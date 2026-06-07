@@ -1,5 +1,5 @@
 ---
-name: rt-primer-blast-ncbi
+name: primer-design-validation-skill
 description: Automate RT-PCR and RT-qPCR primer validation and redesign with NCBI Primer-BLAST. Use when Codex needs to check existing forward/reverse primer pairs, validate transcript or gene specificity, interpret Primer-BLAST HTML results, review off-target amplicons, redesign failed primer pairs, handle NCBI hit-review pages, cross-check species background specificity, or produce a concise primer validity/redesign report with Tm, GC, product length, and in-silico caveats.
 ---
 
@@ -33,7 +33,7 @@ python3 scripts/primer_blast_check.py \
 ```
 
 7. If the pair fails, classify the failure before redesign:
-   - High-risk: unintended products in the qPCR window, same/near-same product length, wrong locus/species, or human/rat cross-amplification when species-specific detection is required.
+   - High-risk: unintended products in the qPCR window, same/near-same product length, wrong locus/species, or target/background species cross-amplification when species-specific detection is required.
    - Lower-risk but not clean: only long off-target products (for example >500 bp) or predicted transcripts outside the qPCR window.
    - Blocked: NCBI hit-review page, timeout, no completed result, or missing target accession.
 8. Redesign failed high-risk or blocked primer pairs when the user asks for a usable order list. Use NCBI Primer-BLAST design with the intended RefSeq/FASTA template, `refseq_mrna`, organism, expected product size 80-180 bp for qPCR, Tm near 60 C, and gene-level transcript variants allowed when appropriate. Keep redesigned candidates separate from original primers until they pass validation.
@@ -41,7 +41,7 @@ python3 scripts/primer_blast_check.py \
    - Allow same-gene transcript variants for gene-level RT-qPCR.
    - Do not allow unrelated homologs, pseudogenes, "like" genes, or wrong-species targets merely to force a pass.
    - After selecting allowed targets, resubmit and parse the final Primer-BLAST result.
-10. For species-specific assays, add a background check in the species that must not amplify. Example: human VEGFA transgene in rat BMSC should pass human VEGFA RefSeq mRNA and also show no target templates in Rattus norvegicus RefSeq mRNA.
+10. For species-specific assays, add a background check in the species that must not amplify. The intended target species should pass, and the host/background species should show no target templates in the selected database.
 11. Output a concise report and, for order-list tasks, a clean final table/workbook with only passable primer pairs marked as orderable. Mark pairs that cannot be cleanly redesigned as "do not order" or "needs vendor/manual redesign"; do not silently include failed candidate sequences.
 12. Clean temporary raw HTML, job directories, helper scripts, and intermediate workbooks when the user asks for cleanup. Preserve only user-facing final reports/order lists and the original source file unless the user asks otherwise.
 13. Report the verdict as in-silico evidence, not wet-lab proof. RT-qPCR efficiency still requires standard curve, melt curve or gel confirmation, and negative controls.
